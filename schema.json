@@ -1,0 +1,94 @@
+{
+    "mappings": {
+      "properties": {
+        "user_id": {
+            "type": "text",
+            "fielddata": true
+        },
+        "tweet_source": {
+            "type": "text",
+            "fielddata": true
+        },
+        "created_at": {
+          "type": "date",
+          "format": "EEE MMM dd HH:mm:ss Z YYYY"
+        },
+        "content": {
+            "type": "text",
+            "fielddata": true
+
+        },
+        "tweet_geo": {
+          "properties": {
+            "name": {
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            },
+            "country": {
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            },
+            "coordinates": {
+              "type": "geo_point"
+            },
+            "place_type": {
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            },
+            "full_name": {
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            },
+            "attributes": {
+              "type": "object"
+            },
+            "country_code": {
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            }
+          }
+        },
+        "user_name": {
+            "type": "text",
+            "fielddata": true
+        },
+        "hastag": {
+            "type": "nested",
+            "properties": {
+                "indices": {
+                    "type": "long"
+                },
+                "text": {
+                    "type": "text",
+                    "fielddata": true
+            }
+          }
+        }
+      }
+    }
+  }
